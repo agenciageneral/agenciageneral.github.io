@@ -71,3 +71,181 @@ body {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+body, html {
+	height: 100%;
+}
+
+/*
+	Fonts
+	========================================================================== */
+@font-face {
+	font-family: 'geared_slabextrabold';
+	src: url('fonts/gearedslab-extrabold-webfont.eot');
+	src: url('fonts/gearedslab-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/gearedslab-extrabold-webfont.woff') format('woff'),
+		 url('fonts/gearedslab-extrabold-webfont.ttf') format('truetype'),
+		 url('fonts/gearedslab-extrabold-webfont.svg#geared_slabextrabold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+@font-face {
+	font-family: 'geared_slabthin';
+	src: url('fonts/gearedslab-light-webfont.eot');
+	src: url('fonts/gearedslab-light-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/gearedslab-light-webfont.woff') format('woff'),
+		 url('fonts/gearedslab-light-webfont.ttf') format('truetype'),
+		 url('fonts/gearedslab-light-webfont.svg#geared_slabthin') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*
+	Estrutura
+	========================================================================== */
+.topo {
+	text-align: center;
+	height: 400px;
+	padding-top: 20px;
+}
+
+.topo .coffe {
+	font-family:'geared_slabthin';
+	text-align: center;
+	color: #2f3417;
+	font-size: 74px;
+	text-transform: uppercase;
+}
+
+.topo .general {
+	font-family:'geared_slabextrabold';
+	color: #f3b917;
+	font-size: 67px;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: -15px;
+}
+
+.topo .separador {
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.meio {
+	height: 369px;
+	background: #2f3417;
+}
+
+.baixo {
+	text-align: center;
+	margin-top: 250px;
+	margin-bottom: 50px;
+}
+
+.baixo a {
+	display: inline-block;
+}
+
+.baixo a img {
+}
+
+
+/* Roleta ========================================================================== */
+.roleta {
+	position: relative;
+	height: 100%;
+}
+
+.tabela ul {
+	margin-left: -3px;
+	margin-top: -3px;
+	font-size: 1px;
+}
+
+.roleta .lg {
+	border-radius: 50% 0 0 0;
+	overflow: hidden;
+	width: 260px;
+	height: 260px;
+	float: left;
+	margin-right: 3px;
+}
+
+.roleta .rodrigo {
+}
+
+.roleta .bruno {
+	margin-top: 3px;
+}
+
+.roleta .andre {
+	margin-top: 3px;
+	float: left;
+	margin-right: 3px;
+}
+
+.botao-iniciar {
+	cursor: pointer;
+	color: #2f3417;
+	font-size: 35px;
+	background: #f3b917;
+	font-family:'geared_slabthin';
+	width: 190px;
+	height: 55px;
+	line-height: 61px;
+	margin: 0 auto;
+	margin-top: 100px;
+	text-align: center;
+	text-transform: uppercase;
+	-webkit-transition: all .05s ease-in-out;
+	-moz-transition: all .05s ease-in-out;
+	-ms-transition: all .05s ease-in-out;
+	-o-transition: all .05s ease-in-out;
+	transition: all .05s ease-in-out;
+}
+
+.botao-iniciar:hover {
+	background: #2f3417;
+	color: #f3b917;
+}
+
+.roleta .tabela {
+	width: 520px;
+	height: 520px;
+	border-radius: 50%;
+	left: 50%;
+	top: 50%;
+	margin-left: -258.5px;
+	margin-top: -258.5px;
+	position: absolute;
+}
+
+.roleta .ponteiro {
+	width: 298px;
+	height: 92px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -149px;
+	margin-top: -35px;
+	background: red;
+	height: 4px;
+	width: 20px;
+	margin-top: -2px;
+	margin-left: -10px;
+	border-right: 2px black solid;
+	-webkit-transition: all .25s ease-in-out;
+	-moz-transition: all .25s ease-in-out;
+	-ms-transition: all .25s ease-in-out;
+	-o-transition: all .25s ease-in-out;
+	transition: all .25s ease-in-out;
+}
+
+.roleta .ponteiro img {
+	position: absolute;
+	top: 12px;
+	left: 24px;
+	display: none;
+}
