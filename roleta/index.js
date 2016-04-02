@@ -127,9 +127,11 @@ var integrante_selecionado = function() {
 	return i;
 };
 
-
-
-
+/**
+ * Cria numeros aleatorios semeados
+ * 
+ * http://stackoverflow.com/questions/424292/seedable-javascript-random-number-generator
+ */
 function nextRandomNumber(){
   var hi = this.seed / this.Q;
   var lo = this.seed % this.Q;
