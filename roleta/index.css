@@ -199,11 +199,11 @@ body, html {
 	margin-top: 100px;
 	text-align: center;
 	text-transform: uppercase;
-	-webkit-transition: all .05s ease-in-out;
-	-moz-transition: all .05s ease-in-out;
-	-ms-transition: all .05s ease-in-out;
-	-o-transition: all .05s ease-in-out;
-	transition: all .05s ease-in-out;
+	-webkit-transition: all .25s ease-in-out;
+	-moz-transition: all .25s ease-in-out;
+	-ms-transition: all .25s ease-in-out;
+	-o-transition: all .25s ease-in-out;
+	transition: all .25s ease-in-out;
 }
 
 .botao-iniciar:hover {
@@ -222,6 +222,17 @@ body, html {
 	position: absolute;
 }
 
+.roleta .ponteiro:after {
+	content:'';
+	display:block;
+	height:1px;
+	background:red;
+	position: absolute;
+	top: 32px;
+	left: 24px;
+	width: 100%;
+	display: none;
+}
 .roleta .ponteiro {
 	width: 298px;
 	height: 92px;
@@ -230,22 +241,22 @@ body, html {
 	left: 50%;
 	margin-left: -149px;
 	margin-top: -35px;
-	background: red;
-	height: 4px;
-	width: 20px;
-	margin-top: -2px;
-	margin-left: -10px;
-	border-right: 2px black solid;
-	-webkit-transition: all .25s ease-in-out;
-	-moz-transition: all .25s ease-in-out;
-	-ms-transition: all .25s ease-in-out;
-	-o-transition: all .25s ease-in-out;
-	transition: all .25s ease-in-out;
+	/* background: red; */
+	/* height: 4px; */
+	/* width: 20px; */
+	/* margin-top: -2px; */
+	/* margin-left: -10px; */
+	/* border-right: 2px black solid; */
+	-webkit-transition: all .10s ease-in-out;
+	-moz-transition: all .10s ease-in-out;
+	-ms-transition: all .10s ease-in-out;
+	-o-transition: all .10s ease-in-out;
+	transition: all .10s ease-in-out;
 }
 
 .roleta .ponteiro img {
 	position: absolute;
 	top: 12px;
 	left: 24px;
-	display: none;
+	/* display: none; */
 }

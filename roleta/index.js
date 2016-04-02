@@ -1,8 +1,10 @@
 var running = false,	// Controla se ja está em execução
 	graus = 0,			// Qual grau é pra girar o ponteiro
-	voltas = 1,			// Quantas voltas antes de sortear
+	voltas = 7,			// Quantas voltas minimas antes de sortear
 	perc = 100,			// Porcentagem da animação
-	graus_total = 10;	// Graus maximo para iniciar
+	graus_total = 80,	// Graus maximo para iniciar
+	timehander = null,
+	angulo_final = 0;
 
 /**
  * Inicializa as funções
@@ -16,6 +18,11 @@ $(function() {
 			return false;
 		}
 		
+		// Geral o angulo final
+		angulo_final = createRandomNumber((380 * voltas), (380 * (voltas + 8)));
+		console.log(angulo_final);
+		
+		// Inicia
 		running = true;
 		iniciar();
 		
@@ -43,7 +50,7 @@ var iniciar = function() {
 	}
 	
 	// Calcula a porcentagem da roleta para acabar
-	perc = ((graus * 100) / (380 * voltas)) + 1;
+	perc = ((graus * 100) / angulo_final) + 1;
 	perc = 100 - perc;
 	
 	// Calcula a quantidade de graus
@@ -52,7 +59,6 @@ var iniciar = function() {
 	// Mostra o integrante
 	if(o != integrante_selecionado()) {
 		o = integrante_selecionado();
-		console.log(o);
 	}
 	
 	// Anima o ponteiro
@@ -63,7 +69,8 @@ var iniciar = function() {
 	});
 	
 	// Proxima interação
-	setTimeout(iniciar, 100);
+	clearTimeout(timehander);
+	timehander = setTimeout(iniciar, 100);
 };
 
 /**
@@ -71,30 +78,64 @@ var iniciar = function() {
  */
 var exibir = function() {
 	var integrante = integrante_selecionado();
-	console.log("fechou:", integrante);
-	
-	console.log(graus);
 }
 
 /**
  * Informa qual o integrante que o ponteiro ta
  */
 var integrante_selecionado = function() {
-	var a = (((parseInt(graus) + 180) % 360) / 4);
+	var a = (((parseInt(graus)) % 360));
 	var i = 0;
 	
-	if ((a > 0) && (a <= 25)) {
+	$('.tabela li img').css({'-webkit-filter':'none'});
+	if ((a >= 0) && (a < 90)) {
 		i = 1;
+		$('.tabela li:nth-child(4) img').css({'-webkit-filter':'sepia(80%)'});
 	}
-	else if ((a > 25) && (a <= 50)) {
+	else if ((a >= 90) && (a < 180)) {
 		i = 2;
+		$('.tabela li:nth-child(3) img').css({'-webkit-filter':'sepia(80%)'});
 	}
-	else if ((a > 50) && (a <= 75)) {
+	else if ((a >= 180) && (a < 270)) {
 		i = 3;
+		$('.tabela li:nth-child(1) img').css({'-webkit-filter':'sepia(80%)'});
 	}
-	else if ((a > 75) && (a <= 100)) {
+	else if ((a >= 270) && (a <= 360)) {
+		$('.tabela li:nth-child(2) img').css({'-webkit-filter':'sepia(80%)'});
 		i = 4;
 	}
 	
 	return i;
 };
+
+
+
+
+function nextRandomNumber(){
+  var hi = this.seed / this.Q;
+  var lo = this.seed % this.Q;
+  var test = this.A * lo - this.R * hi;
+  if(test > 0){
+    this.seed = test;
+  } else {
+    this.seed = test + this.M;
+  }
+  return (this.seed * this.oneOverM);
+}
+
+function RandomNumberGenerator(){
+  var d = new Date();
+  this.seed = 2345678901 + (d.getSeconds() * 0xFFFFFF) + (d.getMinutes() * 0xFFFF);
+  this.A = 48271;
+  this.M = 2147483647;
+  this.Q = this.M / this.A;
+  this.R = this.M % this.A;
+  this.oneOverM = 1.0 / this.M;
+  this.next = nextRandomNumber;
+  return this;
+}
+
+function createRandomNumber(Min, Max){
+  var rand = new RandomNumberGenerator();
+  return Math.round((Max-Min) * rand.next() + Min);
+}
