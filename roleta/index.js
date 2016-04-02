@@ -20,7 +20,6 @@ $(function() {
 		
 		// Geral o angulo final
 		angulo_final = createRandomNumber((380 * voltas), (380 * (voltas + 8)));
-		console.log(angulo_final);
 		
 		// Inicia
 		running = true;
@@ -77,7 +76,27 @@ var iniciar = function() {
  * Exibe o sortudo
  */
 var exibir = function() {
+	$('.lightbox-area').css({ 'zoom': 0.00001 });
+	
 	var integrante = integrante_selecionado();
+	switch(integrante) {
+		case 1:
+			$('.oficial').html('Bruno');
+			break;
+		case 2:
+			$('.oficial').html('André');
+			break;
+		case 3:
+			$('.oficial').html('LG');
+			break;
+		case 4:
+			$('.oficial').html('Rodrigo');
+			break;
+	}
+	
+	$('.lightbox-block').fadeIn(function() {
+		$('.lightbox-area').animate({ 'zoom': 1 }, 700);
+	});
 }
 
 /**
