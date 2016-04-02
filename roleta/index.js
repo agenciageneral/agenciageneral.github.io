@@ -78,6 +78,7 @@ var iniciar = function() {
 var exibir = function() {
 	$('.lightbox-area').css({ 'zoom': 0.00001 });
 	
+	// Moda o nome do integrante
 	var integrante = integrante_selecionado();
 	switch(integrante) {
 		case 1:
@@ -94,6 +95,13 @@ var exibir = function() {
 			break;
 	}
 	
+	// Toca o som
+	var a = document.getElementById('audio'); 
+	if (a.canPlayType && a.canPlayType('audio/mp3;').replace(/no/, '')) {
+		a.play();
+	}
+	
+	// Exibe o lightbox
 	$('.lightbox-block').fadeIn(function() {
 		$('.lightbox-area').animate({ 'zoom': 1 }, 700);
 	});
