@@ -1,0 +1,47 @@
+<form action="https://instagram.com/oauth/authorize/" method="get" id="formarea" style="display:none;font-family: Helvetica, Arial;">
+
+	<div style="font-size:12px;">
+		1º - Acesse o <a href="https://www.instagram.com/developer/clients/manage/" target="_blank">instagram</a> e crie um novo cliente<br>
+		<i style="margin-left:30px;display:inline-block;">&nbsp;i. em <strong>Valid redirect URIs</strong> coloque o endereço <strong>http://agenciageneral.github.io/instatoken</strong></i><br>
+		<i style="margin-left:30px;display:inline-block;">ii. após cadastrar o cliente, edite o mesmo, e desmarque a opção <strong>Disable implicit OAuth</strong></i><br>
+		<br>
+		2º - Adicione o client_id no campo abaixo, e caso tenha colocado outro <strong>Valid redirect URIs</strong><br>
+		<br>
+		3º - Envie o formulário<br>
+		<i style="margin-left:30px;display:inline-block;">i. ao enviar o formulário, o instagram pedirá para você autorizar o aplicativo. Autorizando o aplicativo, você será redirecionado de volta, com o seu token</i><br>
+	</div>
+	<br><br>
+	<input type="hidden" name="response_type" value="token" />
+	<input type="text" placeholder="client_id" name="client_id" value="" style="width:500px;padding: 10px 5px;font-family: Helvetica, Arial;"/><br><br>
+	<input type="text" placeholder="redirect_uri" name="redirect_uri" value="http://agenciageneral.github.io/instatoken" style="width:500px;padding: 10px 5px;font-family: Helvetica, Arial;"/><br><br>
+	<input type="submit" value="Enviar" style="width:100px; padding: 10px 5px; background: #efefef; border:1px #8d8d8d solid; text-transform: uppercase; cursor:pointer;font-family: Helvetica, Arial;" />
+</form>
+
+<div id="token" style="display: block;font-weight: 300;text-transform: uppercase;font-size: 20px;font-family: Helvetica, Arial;"></div>
+
+<script type="text/javascript">
+
+	function getHashParams() {
+
+		var hashParams = {};
+		var e,
+			a = /\+/g,
+			r = /([^&;=]+)=?([^&;]*)/g,
+			d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+			q = window.location.hash.substring(1);
+
+		while (e = r.exec(q))
+		hashParams[d(e[1])] = d(e[2]);
+
+		return hashParams;
+	}
+	
+	if(typeof(getHashParams().access_token) != "undefined") {
+		document.getElementById('token').innerHTML = "Seu token é: " + getHashParams().access_token;
+		document.getElementById('token').style.display = "block";
+	}
+	else {
+		document.getElementById('formarea').style.display = "block";
+	}
+
+</script>
