@@ -91,7 +91,7 @@ var exibir = function() {
 			$('.oficial').html('LG');
 			break;
 		case 4:
-			$('.oficial').html('Rodrigo');
+			$('.oficial').html('Marcelo');
 			break;
 	}
 	
